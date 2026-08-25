@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula Sheet — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h2 class="page-title">📐 Formula Sheet</h2>
+    <p class="page-tagline">A quick-reference summary. Your assessments allow one A4 sheet of <em>equations only</em> — use this as a starting point and copy out the ones you keep forgetting.</p>
+
+    <div class="callout exam"><strong>OUTCOME A</strong> below.</div>
+    <section class="block">
+      <h3>DC Machines <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome A)</span></h3>
+      <div class="formula small">E = (φZN/60)(P/A) &nbsp;|&nbsp; lap: A=P&nbsp;&nbsp; wave: A=2</div>
+      <div class="formula small">P<sub>d</sub> = E·I<sub>a</sub> = T<sub>e</sub>ω<sub>m</sub> &nbsp;|&nbsp; T<sub>e</sub> = k<sub>a</sub>φI<sub>a</sub> &nbsp;|&nbsp; ω<sub>m</sub>=2πN/60</div>
+      <div class="formula small">V = E + I<sub>a</sub>R<sub>a</sub> (motor) &nbsp;|&nbsp; E = V − I<sub>a</sub>R<sub>a</sub> (motor back-emf) &nbsp;|&nbsp; E = V + I<sub>a</sub>R<sub>a</sub> (generator)</div>
+      <div class="formula small">n ∝ E/φ &nbsp;(series unsaturated: φ∝I<sub>a</sub> → T∝I<sub>a</sub>²) &nbsp;(PM: φ=const → E∝n)</div>
+      <div class="formula small">η = P<sub>out</sub>/P<sub>in</sub> &nbsp;|&nbsp; max η when I<sub>a</sub>²R<sub>a</sub> = P<sub>constant</sub> &nbsp;→&nbsp; I<sub>a</sub>=√(P<sub>c</sub>/R<sub>a</sub>)</div>
+    </section>
+
+    <div class="callout exam" style="margin-top:26px;"><strong>OUTCOME B</strong> below.</div>
+    <section class="block">
+      <h3>Induction Motors <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome B)</span></h3>
+      <div class="formula small">n<sub>s</sub> = 120f/p &nbsp;|&nbsp; s = (n<sub>s</sub>−n)/n<sub>s</sub> &nbsp;|&nbsp; n=(1−s)n<sub>s</sub> &nbsp;|&nbsp; f<sub>2</sub>=sf<sub>1</sub></div>
+      <div class="formula small">P<sub>g</sub> (air-gap) = 3I<sub>2</sub>²(R<sub>2</sub>/s) &nbsp;|&nbsp; rotor Cu loss = sP<sub>g</sub> &nbsp;|&nbsp; P<sub>dev</sub>=(1−s)P<sub>g</sub></div>
+      <div class="formula small">T<sub>e</sub> = P<sub>g</sub>/ω<sub>s</sub> &nbsp;|&nbsp; max torque: R<sub>2</sub>=sX<sub>2</sub> &nbsp;|&nbsp; T/T<sub>max</sub> = 2(s*/s)/[1+(s*/s)²]</div>
+      <div class="formula small">Blocked-rotor: R<sub>e</sub>=P<sub>s</sub>/I<sub>s</sub>², X<sub>e</sub>=√[(V<sub>s</sub>I<sub>s</sub>)²−P<sub>s</sub>²]/I<sub>s</sub>²</div>
+      <div class="formula small">Autotransformer start: T<sub>s</sub>/T<sub>FL</sub>=(kI<sub>s,full</sub>/I<sub>FL</sub>)²s<sub>FL</sub> &nbsp;|&nbsp; Star-delta: I,T both ÷3 vs DOL</div>
+    </section>
+
+    <section class="block">
+      <h3>Synchronous Machines <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome B)</span></h3>
+      <div class="formula small">n<sub>s</sub>=120f/p &nbsp;|&nbsp; q=Q/(pm) &nbsp;|&nbsp; α=180°/(mq) &nbsp;|&nbsp; k<sub>d</sub>=sin(qα/2)/[q sin(α/2)]</div>
+      <div class="formula small">k<sub>p</sub>=sin(β·90°/τ) &nbsp;|&nbsp; k<sub>w</sub>=k<sub>d</sub>k<sub>p</sub> &nbsp;|&nbsp; E<sub>rms</sub>=4.44k<sub>w</sub>fNφ<sub>m</sub></div>
+      <div class="formula small">V<sub>0</sub> = V<sub>t</sub> + I<sub>a</sub>(R<sub>a</sub>+jX<sub>s</sub>) &nbsp;|&nbsp; %reg = (V<sub>0</sub>−V<sub>t</sub>)/V<sub>t</sub> × 100</div>
+      <div class="formula small">Round rotor: P=(V<sub>t</sub>V<sub>0</sub>/X<sub>s</sub>)sinδ</div>
+      <div class="formula small">Salient pole: P=(V<sub>t</sub>V<sub>0</sub>/X<sub>d</sub>)sinδ + (V<sub>t</sub>²/2)(1/X<sub>q</sub>−1/X<sub>d</sub>)sin2δ</div>
+      <div class="formula small">Over-excited → leading (supplies vars, PF correction) &nbsp;|&nbsp; Under-excited → lagging (absorbs vars)</div>
+    </section>
+
+    <div class="callout exam" style="margin-top:26px;">General mechanics formulas below apply to <strong>both outcomes</strong> — the hydraulic-power line is specific to Outcome B pump problems.</div>
+    <section class="block">
+      <h3>Mechanics &amp; Energy Conversion <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome A &amp; B applications)</span></h3>
+      <div class="formula small">P = Tω &nbsp;|&nbsp; ω=2πN/60 &nbsp;|&nbsp; T=J(dω/dt)+bω+T<sub>load</sub></div>
+      <div class="formula small">Gearbox (ideal): N<sub>1</sub>D<sub>1</sub>=N<sub>2</sub>D<sub>2</sub> &nbsp;|&nbsp; T<sub>out</sub>/T<sub>in</sub>=N<sub>in</sub>/N<sub>out</sub></div>
+      <div class="formula small">With losses: T<sub>motor</sub>=(T<sub>load</sub>/ratio)/η<sub>gb</sub> &nbsp;|&nbsp; P<sub>out</sub>=P<sub>in</sub>×η<sub>gb</sub></div>
+      <div class="formula small">Lifting: F=mg &nbsp;|&nbsp; T<sub>drum</sub>=F·r &nbsp;|&nbsp; P=Fv &nbsp;|&nbsp; v=distance/time</div>
+      <div class="formula small">Chain efficiency: P<sub>source</sub>=P<sub>load</sub>/(η<sub>1</sub>η<sub>2</sub>η<sub>3</sub>...) &nbsp;|&nbsp; Runtime (h) ≈ Capacity (A·h)/Current (A)</div>
+      <div class="formula small">Hydraulic power (Outcome B pumps): P<sub>hyd</sub>=(ρVgh)/t, &nbsp;ρ<sub>water</sub>=1000 kg/m³ &nbsp;|&nbsp; 3-phase: P=√3V<sub>L</sub>I<sub>L</sub>cosφ</div>
+    </section>
+
+    <div class="callout exam">
+      <strong>Print this page:</strong> use your browser's Print (Ctrl/Cmd+P) → "Save as PDF" to get a clean copy for your A4 equation sheet — then trim it down to fit and add anything specific to your lecturer's notation.
+    </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

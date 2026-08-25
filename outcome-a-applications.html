@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outcome A: DC Systems &amp; Mechanics — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="callout exam" style="margin-bottom:22px;">
+      <strong>OUTCOME A</strong> — this page + DC Machines together make up everything examined under
+      Outcome A (your Assessment 1 / Assessment 2 style tests): DC-machine theory applied to real driven
+      systems — gearboxes, hoists/elevators, and battery/converter chains.
+    </div>
+
+    <h2 class="page-title">⚙️ Outcome A: DC Systems &amp; Mechanics</h2>
+    <p class="page-tagline">Driving masses/inertias, gearboxes, linear motion (elevators), and DC-motor efficiency chains — the "glue" between DC machine theory and real systems in your past papers.</p>
+
+    <section class="block">
+      <h3>1. Torque, speed, power &amp; inertia basics</h3>
+      <div class="formula">P = T·ω &nbsp;&nbsp;(ω in rad/s = 2πN/60) &nbsp;&nbsp;&nbsp;&nbsp; T = J(dω/dt) + bω + T<sub>load</sub></div>
+      <p>J is the total moment of inertia (motor rotor + load + couplings, referred to the same shaft), and b is a
+      viscous damping/friction coefficient. At steady speed, dω/dt = 0 and the motor torque simply balances the load
+      (+ friction) torque.</p>
+      <div class="callout tip">Every rotational formula here has a direct translational twin: F = ma ↔ T = Jα; F = mg (lifting) ↔ weight torque;
+      P = Fv ↔ P = Tω. Elevator/hoist problems are just this translational side dressed up with a drum to convert rotation → linear motion.</div>
+    </section>
+
+    <section class="block">
+      <h3>2. Gearboxes — the ideal (lossless) picture, then efficiency</h3>
+      <p>An ideal gearbox conserves power: whatever speed is traded away, torque is gained by the same ratio (and vice versa).</p>
+      <div class="formula">Gear ratio n = N<sub>in</sub>/N<sub>out</sub> = T<sub>out</sub>/T<sub>in</sub> &nbsp;&nbsp;(ideal, lossless)</div>
+      <p>For a belt-and-pulley system, the ratio is simply the ratio of pulley diameters (belt speed is equal at both pulleys):</p>
+      <div class="formula">N<sub>1</sub>D<sub>1</sub> = N<sub>2</sub>D<sub>2</sub></div>
+      <p>Real gearboxes lose some power to friction, so an efficiency η<sub>gb</sub> &lt; 1 must be included. The key exam
+      skill is knowing <em>which side</em> to divide or multiply by η on:</p>
+      <ul>
+        <li>Going from <strong>output (load) requirement → input (motor) requirement</strong>: input torque needed = (ideal input torque) / η<sub>gb</sub>, and input power needed = (ideal input power)/η<sub>gb</sub> — the motor always has to supply <em>more</em> than the lossless ideal.</li>
+        <li>Going from <strong>input (motor) → output (load) delivered</strong>: output power delivered = (input power) × η<sub>gb</sub> — always <em>less</em> than the lossless ideal.</li>
+      </ul>
+      <div class="callout warn">Watch pulley/gear <strong>direction</strong> carefully in these problems — "the driving pulley diameter" and "the driven
+      pulley diameter" get swapped in some past-paper wording specifically to test whether you're just plugging numbers in or actually
+      understanding which shaft turns faster.</div>
+    </section>
+
+    <section class="block">
+      <h3>3. Linear motion — elevators, hoists &amp; vehicles</h3>
+      <div class="formula">F = mg &nbsp;(lifting at constant speed, no acceleration) &nbsp;&nbsp;&nbsp; T<sub>drum</sub> = F × r<sub>drum</sub> &nbsp;&nbsp;&nbsp; P = F·v</div>
+      <p>If there IS acceleration (e.g. the load starts from rest and speeds up), add the inertial term: F = m(g ± a) depending
+      on direction, and refer all inertias to the same shaft via the gear ratio squared when computing effective J.</p>
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>An elevator (no counterweight): cage 1 t, payload 3 t, lifted 30 m in 15 s, drum diameter 1.5 m. Find drum torque, and motor speed/gearbox ratio if the motor turns at 1500 rpm.</strong></p>
+        <ol>
+          <li>Total mass = 4000 kg. F = 4000×9.81 = 39 240 N.</li>
+          <li>T<sub>drum</sub> = F×r = 39240×0.75 = 29 430 N·m.</li>
+          <li>Drum speed: v = 30/15 = 2 m/s → ω<sub>drum</sub> = v/r = 2/0.75 = 2.667 rad/s → N<sub>drum</sub> = 25.46 rpm.</li>
+          <li>Gear ratio = N<sub>motor</sub>/N<sub>drum</sub> = 1500/25.46 ≈ 58.9 : 1.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>4. DC efficiency chains &amp; battery sizing</h3>
+      <p>Many of your past-paper problems chain several DC-system stages together — a battery feeding a converter feeding a
+      DC motor feeding a gearbox feeding a load (or the reverse, working backwards from a required load power to a required
+      battery current). The rule is always the same: <strong>multiply efficiencies going forward (input → output);
+      divide by them going backward (output requirement → input requirement)</strong>.</p>
+      <div class="formula">P<sub>battery</sub> = P<sub>load</sub> / (η<sub>converter</sub> × η<sub>motor</sub> × η<sub>gearbox</sub> × ...)</div>
+      <p>Battery sizing (rough, constant-current approximation):</p>
+      <div class="formula">Runtime (hours) ≈ Capacity (A·h) / Discharge current (A)</div>
+      <div class="callout tip">Draw the block diagram first (battery → converter → motor → gearbox → load) before writing any equations —
+      almost every mark in these questions is for correctly identifying which efficiency divides which power, and a block diagram makes
+      the direction of the chain visually obvious.</div>
+    </section>
+
+    <section class="block">
+      <h3>5. Dynamic braking (conceptual — comes up as T/F questions)</h3>
+      <p>Disconnecting a DC motor's armature from the supply and switching a resistor across it lets the stored kinetic
+      energy drive current through that resistor, bringing the machine to rest quickly. It is simple and effective, but the
+      energy is simply dissipated as I²R heat — <strong>not</strong> recovered. (Compare with <em>regenerative</em> braking,
+      where the machine is run briefly as a generator feeding energy back into the supply — that IS energy-efficient.)</p>
+    </section>
+
+    <section class="block">
+      <h3>Section Test — Outcome A: DC Systems &amp; Mechanics</h3>
+      <p class="page-tagline">8 questions on gearboxes, elevators, and DC-system efficiency chains.</p>
+      <div id="quiz-outcomeA" class="quiz-wrap"></div>
+    </section>
+  </main>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>QuizEngine.render('quiz-outcomeA', QB.outcomeA, 'outcomeA');</script>
+</body>
+</html>

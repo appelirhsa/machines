@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC Machines — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h2 class="page-title">🔋 DC Machines</h2>
+    <p class="page-tagline">Principles &amp; types, EMF/torque equations, losses &amp; efficiency, and speed control (including Ward-Leonard).</p>
+
+    <section class="block">
+      <h3>1. Basic principle &amp; construction</h3>
+      <p>A DC machine has a stationary <strong>field</strong> (permanent magnet or field winding, producing flux φ) and a
+      rotating <strong>armature</strong> carrying conductors that cut this flux. It is fully reversible:</p>
+      <ul>
+        <li><strong>Generator action:</strong> the shaft is driven mechanically → conductors cut flux → an EMF is induced (Faraday's law) → current flows into an external circuit.</li>
+        <li><strong>Motor action:</strong> current is driven through the armature conductors sitting in the field → a force (F = BIl) is produced on each conductor → torque is developed on the shaft.</li>
+      </ul>
+      <div class="callout tip">Whether a given machine is "acting as" a motor or generator depends only on the direction of power flow at that instant — not on its physical construction.</div>
+    </section>
+
+    <section class="block">
+      <h3>2. The EMF equation</h3>
+      <p>For an armature with <strong>Z</strong> total conductors, <strong>P</strong> poles, <strong>A</strong> parallel paths,
+      flux per pole <strong>φ</strong> (Wb), running at <strong>N</strong> rpm:</p>
+      <div class="formula">E &nbsp;=&nbsp; (φ Z N)/60 &nbsp;×&nbsp; (P/A)</div>
+      <table class="data">
+        <tr><th>Winding type</th><th>Parallel paths, A</th><th>Effect</th></tr>
+        <tr><td>Lap</td><td>A = P</td><td>P/A = 1 → lower voltage, higher current capability (more parallel paths)</td></tr>
+        <tr><td>Wave</td><td>A = 2</td><td>P/A = P/2 → higher voltage, lower current capability</td></tr>
+      </table>
+      <p>Since E ∝ φN (for a fixed machine), you can also write E<sub>2</sub>/E<sub>1</sub> = (φ<sub>2</sub>N<sub>2</sub>)/(φ<sub>1</sub>N<sub>1</sub>) —
+      extremely useful for "what happens if speed/flux changes" questions without recomputing from scratch.</p>
+
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>A 4-pole, lap-wound armature has 728 conductors and runs at 1800 rpm; flux/pole = 30 mWb. Find the induced voltage.</strong></p>
+        <ol>
+          <li>Lap wound → A = P = 4, so P/A = 1.</li>
+          <li>E = φZN/60 = (0.030)(728)(1800)/60.</li>
+          <li>E = 655.2 V.</li>
+        </ol>
+        <p>If the same armature were <em>wave</em>-wound instead (A=2), E would be multiplied by P/2 = 2, giving 1310.4 V — same conductors, same flux, same speed, but a completely different terminal voltage. This is a classic exam trick — always check the winding type before applying the formula.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>3. Torque, developed power, and losses</h3>
+      <div class="formula">P<sub>d</sub> = E·I<sub>a</sub> &nbsp;=&nbsp; T<sub>e</sub>·ω<sub>m</sub> &nbsp;&nbsp;&nbsp;&nbsp; T<sub>e</sub> = k<sub>a</sub>φI<sub>a</sub></div>
+      <p>where ω<sub>m</sub> = 2πN/60 (rad/s). This is the electromechanical energy-conversion link: the same power that
+      "disappears" electrically as E·Ia reappears mechanically as torque times speed.</p>
+      <h4>Loss breakdown</h4>
+      <table class="data">
+        <tr><th>Loss</th><th>Formula</th></tr>
+        <tr><td>Armature copper loss</td><td>Ia²Ra</td></tr>
+        <tr><td>Field copper loss (shunt)</td><td>If²Rf</td></tr>
+        <tr><td>Brush contact loss</td><td>(brush voltage drop) × Ia</td></tr>
+        <tr><td>Core (iron) loss + friction &amp; windage</td><td>lumped as "rotational" or "constant" losses P<sub>c</sub></td></tr>
+        <tr><td>Stray-load loss</td><td>often estimated as ~1% of rated output</td></tr>
+      </table>
+      <div class="formula small">η = Output / Input = Output / (Output + Σ losses)</div>
+      <div class="callout tip"><strong>Maximum efficiency</strong> occurs when the variable loss (Ia²Ra) equals the constant loss P<sub>c</sub>: at that point, I<sub>a</sub> = √(P<sub>c</sub>/R<sub>a</sub>).</div>
+
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>A 100 kW, 230 V shunt generator has R<sub>a</sub>=0.05 Ω, R<sub>f</sub>=57.5 Ω, and 1.8 kW rotational loss. Find full-load efficiency.</strong></p>
+        <ol>
+          <li>If = 230/57.5 = 4 A. IL = 100000/230 = 434.8 A. Ia = IL+If = 438.8 A.</li>
+          <li>If²Rf = 0.92 kW. Ia²Ra = 9.63 kW. Total losses = 0.92+9.63+1.8 = 12.35 kW.</li>
+          <li>η = 100/(100+12.35) = 89%.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>4. Types of DC machine &amp; their torque–speed behaviour</h3>
+      <table class="data">
+        <tr><th>Type</th><th>Field connection</th><th>Torque–speed character</th><th>Typical use</th></tr>
+        <tr><td>Separately excited</td><td>Independent supply</td><td>Nearly linear speed drop with load torque; flux fixed by external control</td><td>Precise speed/torque control, Ward-Leonard, servo drives</td></tr>
+        <tr><td>Shunt</td><td>Field in parallel with armature</td><td>"Fairly flat" — speed drops only slightly with load</td><td>Constant-speed applications (fans, machine tools)</td></tr>
+        <tr><td>Series</td><td>Field in series with armature</td><td>Flux ∝ Ia (unsaturated) → very high starting torque, speed falls steeply as load rises; <em>never run unloaded</em> (can overspeed dangerously)</td><td>Traction (trains, cranes, starter motors)</td></tr>
+        <tr><td>Compound (cumulative)</td><td>Both shunt &amp; series fields, aiding</td><td>Between shunt and series — good starting torque + speed regulation</td><td>Elevators, rolling mills, presses</td></tr>
+        <tr><td>Compound (differential)</td><td>Series field opposes shunt</td><td>Speed rises with load — rarely used, can be unstable</td><td>Special constant-speed applications</td></tr>
+        <tr><td>Permanent magnet (PM)</td><td>Flux from magnets, constant</td><td>Linear T–ω line, like separately-excited with fixed φ; E ∝ n directly</td><td>Small motors, servo &amp; robotics, EV auxiliary drives</td></tr>
+      </table>
+      <p><strong>Short-shunt vs long-shunt compound:</strong> in short-shunt, the shunt field is connected directly across the
+      armature (series field carries only load current outside that loop); in long-shunt, the shunt field is across the
+      series combination of armature + series field. The difference shows up in exactly where I<sub>a</sub> vs I<sub>L</sub> is used
+      in the voltage/current equations — always redraw the circuit for these problems.</p>
+      <div class="callout warn">For a <strong>PM motor</strong>, φ is constant, so E ∝ n and T ∝ Ia directly — this makes "find the new speed
+      given a new voltage/current" problems solvable purely from E = V − IaRa and n₂ = n₁(E₂/E₁).</div>
+    </section>
+
+    <section class="block">
+      <h3>5. Speed control &amp; the Ward-Leonard system</h3>
+      <div class="formula">n &nbsp;=&nbsp; E / (k<sub>a</sub>φ) &nbsp;=&nbsp; (V − I<sub>a</sub>R<sub>a</sub>) / (k<sub>a</sub>φ)</div>
+      <p>Three classic ways to change speed, visible directly in this equation:</p>
+      <ul>
+        <li><strong>Field control</strong> — reduce φ (field weakening) → speed rises. Torque capability falls for the same Ia (constant-power region above base speed).</li>
+        <li><strong>Armature resistance control</strong> — insert resistance in series with the armature → E (and hence n) drops for the same V, but wastes power as heat in the resistor. Simple, cheap, inefficient.</li>
+        <li><strong>Armature voltage control</strong> — vary V directly (e.g. via a controlled rectifier, chopper, or the Ward-Leonard generator) → speed changes with good efficiency and full torque available at any speed up to base speed.</li>
+      </ul>
+      <div class="callout exam"><strong>Ward-Leonard system:</strong> A separately-driven DC generator supplies a DC motor's armature directly.
+      The generator's own (small) field current/voltage is varied to set the generator's output voltage, which sets the motor's armature
+      voltage and hence its speed — smooth, continuously variable, reversible speed control historically achieved without power electronics.
+      The transfer function relates field voltage input to motor speed output through the generator, motor, and load inertia/damping.</div>
+
+      <div class="example">
+        <span class="tag">Worked example — PM motor speed scaling</span>
+        <p><strong>A PM motor runs at 1400 rpm on 10 V, drawing 7 A (Ra = 0.2 Ω). Find the speed on 12 V drawing 8 A, same mechanical load type.</strong></p>
+        <ol>
+          <li>E₁ = V₁ − I₁Ra = 10 − (7)(0.2) = 8.6 V.</li>
+          <li>E₂ = V₂ − I₂Ra = 12 − (8)(0.2) = 10.4 V.</li>
+          <li>Since φ is constant: n₂ = n₁ × (E₂/E₁) = 1400 × (10.4/8.6) ≈ 1693 rpm.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>Section Test — DC Machines</h3>
+      <p class="page-tagline">10 questions. Get one wrong and you'll be walked through it step by step.</p>
+      <div id="quiz-dc" class="quiz-wrap"></div>
+    </section>
+  </main>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>QuizEngine.render('quiz-dc', QB.dc, 'dc');</script>
+</body>
+</html>

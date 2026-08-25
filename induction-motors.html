@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Induction Motors — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h2 class="page-title">🌀 Polyphase Induction Motors</h2>
+    <p class="page-tagline">Rotating field &amp; slip, equivalent circuit, torque, testing, and starting methods.</p>
+
+    <section class="block">
+      <h3>1. The rotating field &amp; slip</h3>
+      <p>A balanced 3-phase stator winding produces a magnetic field that rotates at <strong>synchronous speed</strong>:</p>
+      <div class="formula">n<sub>s</sub> = 120f / p &nbsp;&nbsp;(rpm, p = number of poles)</div>
+      <p>The rotor is dragged along by this field but can never quite catch it (otherwise there'd be no relative motion,
+      no induced rotor EMF, and no torque). The difference is <strong>slip</strong>:</p>
+      <div class="formula">s = (n<sub>s</sub> − n)/n<sub>s</sub> &nbsp;&nbsp;&nbsp;&nbsp; n = (1−s)n<sub>s</sub></div>
+      <p>The rotor "sees" the field slip past it at frequency f<sub>2</sub> = s·f<sub>1</sub>, so the induced rotor EMF and
+      current are at this slip frequency — very high (≈ f₁) at standstill, and very low near synchronous speed.</p>
+      <div class="callout tip">The rotor's own magnetic field always rotates at synchronous speed relative to the <em>stator</em> —
+      whatever the slip — which is exactly why a constant torque is produced (the two fields must be stationary relative to each other for steady torque).</div>
+    </section>
+
+    <section class="block">
+      <h3>2. Per-phase equivalent circuit &amp; power flow</h3>
+      <p>Just like a transformer, but with the rotor circuit's resistance divided by slip:</p>
+      <div class="formula">Z<sub>e</sub> = R<sub>1</sub> + jX<sub>1</sub> + (jX<sub>m</sub> ∥ (R<sub>2</sub>/s + jX<sub>2</sub>))</div>
+      <p>Power flow across the machine, per phase (P<sub>g</sub> = air-gap power = power crossing into the rotor circuit):</p>
+      <div class="formula">P<sub>g</sub> = 3I<sub>2</sub>²(R<sub>2</sub>/s) &nbsp;&nbsp;&nbsp; Rotor Cu loss = s·P<sub>g</sub> &nbsp;&nbsp;&nbsp; P<sub>developed</sub> = (1−s)P<sub>g</sub></div>
+      <p>Shaft output power = P<sub>developed</sub> − mechanical (friction &amp; windage) losses. Motor <strong>efficiency</strong> = shaft output / total electrical input (stator input = P<sub>g</sub> + stator Cu loss + stator core loss).</p>
+      <div class="callout tip">A very common trap: rotor <em>core</em> loss is normally neglected because rotor frequency is so low —
+      but stator core loss is NOT neglected, since the stator always sees full supply frequency.</div>
+    </section>
+
+    <section class="block">
+      <h3>3. Torque &amp; maximum torque</h3>
+      <div class="formula">T<sub>e</sub> = P<sub>g</sub>/ω<sub>s</sub> = (3I<sub>2</sub>²R<sub>2</sub>) / (s·ω<sub>s</sub>)</div>
+      <p>Differentiating torque with respect to R<sub>2</sub> (holding s and X<sub>2</sub> fixed) shows maximum torque occurs when:</p>
+      <div class="formula">R<sub>2</sub> = s·X<sub>2</sub> &nbsp;&nbsp;(at standstill, s=1: R<sub>2</sub>=X<sub>2</sub> gives max <em>starting</em> torque)</div>
+      <p>A handy ratio form, useful when you know T<sub>max</sub> and the slip s* at which it occurs, and want torque at any other slip s:</p>
+      <div class="formula">T<sub>e</sub>/T<sub>max</sub> = 2(s*/s) / [1 + (s*/s)²]</div>
+      <div class="callout tip">This is why wound-rotor (slip-ring) machines can add external rotor resistance to shift the slip at which
+      maximum torque occurs — pushing it towards standstill for a high starting torque, without the very high starting current of a low-resistance cage rotor.</div>
+    </section>
+
+    <section class="block">
+      <h3>4. No-load &amp; blocked-rotor tests</h3>
+      <table class="data">
+        <tr><th>Test</th><th>Analogous to</th><th>Finds</th></tr>
+        <tr><td>No-load test</td><td>Transformer open-circuit test</td><td>Magnetising branch (R<sub>m</sub>, X<sub>m</sub>) — slip ≈ 0 so R<sub>2</sub>/s is huge, negligible current flows there</td></tr>
+        <tr><td>Blocked-rotor test (reduced voltage)</td><td>Transformer short-circuit test</td><td>Series (leakage) impedance R<sub>e</sub>=R<sub>1</sub>+a²R<sub>2</sub>, X<sub>e</sub>=X<sub>1</sub>+a²X<sub>2</sub> — s=1 so R<sub>2</sub>/s is small, almost all current flows through the series branch</td></tr>
+      </table>
+      <p>From the no-load test: R<sub>m</sub>=V₀²/P₀, X<sub>m</sub>=V₀²/√((V₀I₀)²−P₀²). From the blocked-rotor test: R<sub>e</sub>=P<sub>s</sub>/I<sub>s</sub>², X<sub>e</sub>=√((V<sub>s</sub>I<sub>s</sub>)²−P<sub>s</sub>²)/I<sub>s</sub>².</p>
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>No-load: 400 V(L-L), 1770 W, 18.5 A. Friction &amp; windage = 600 W. Blocked-rotor: 45 V(L-L), 2700 W, 63 A. Find the approximate equivalent circuit.</strong></p>
+        <ol>
+          <li>No-load per-phase: V₀=231V, P₀=(1770−600)/3=390W, I₀=18.5A → R<sub>m</sub>=231²/390=136.8Ω, X<sub>m</sub>=231²/√(231²·18.5²−390²)=12.5Ω.</li>
+          <li>Blocked-rotor per-phase: V<sub>s</sub>=25.98V, I<sub>s</sub>=63A, P<sub>s</sub>=900W → R<sub>e</sub>=900/63²=0.23Ω, X<sub>e</sub>=√(25.98²·63²−900²)/63²=0.34Ω.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>5. Starting methods</h3>
+      <table class="data">
+        <tr><th>Method</th><th>Effect on starting current</th><th>Effect on starting torque</th></tr>
+        <tr><td>Direct-on-line (DOL)</td><td>Full — typically 5–9× full-load current</td><td>Full rated starting torque</td></tr>
+        <tr><td>Star-delta starter</td><td>Reduced to ≈1/3 of DOL value</td><td>Reduced to ≈1/3 of DOL value (both scale with V², and star gives V/√3 per phase)</td></tr>
+        <tr><td>Autotransformer at tap ratio k</td><td>Reduced to k × (DOL current)</td><td>Reduced to k² × (DOL torque) — current only drops by k on the supply side, but torque (∝V²) drops by k²</td></tr>
+        <tr><td>Wound-rotor + external rotor resistance</td><td>Reduced smoothly as resistance is cut out in stages</td><td>Can actually be <em>increased</em> at standstill — pushes max-torque slip towards s=1</td></tr>
+        <tr><td>Soft starter (voltage ramp) / VSD (V/Hz control)</td><td>Controlled, low inrush</td><td>Controlled, smooth acceleration; a VSD can maintain full torque capability throughout</td></tr>
+      </table>
+      <div class="callout warn">Autotransformer starting torque ratio: T<sub>s</sub>/T<sub>FL</sub> = (I<sub>s</sub>/I<sub>FL</sub>)²·s<sub>FL</sub>,
+      where I<sub>s</sub> is the actual (reduced) starting current on the motor side = k × (full-voltage DOL starting current).</div>
+      <div class="callout tip"><strong>Fuse / protection sizing</strong> (a favourite in your past papers): compute the actual full-load or
+      per-phase running current from the rated power, voltage, connection (star/delta) and efficiency/pf, then size the fuse with the
+      required overrating (commonly asked as +20%) to allow for the higher starting current without nuisance-tripping on normal running.</div>
+    </section>
+
+    <section class="block">
+      <h3>Section Test — Induction Motors</h3>
+      <p class="page-tagline">10 questions, styled directly on your solved problems and past-paper questions.</p>
+      <div id="quiz-ind" class="quiz-wrap"></div>
+    </section>
+  </main>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>QuizEngine.render('quiz-ind', QB.ind, 'ind');</script>
+</body>
+</html>

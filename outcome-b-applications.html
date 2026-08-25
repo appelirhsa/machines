@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outcome B: AC Systems &amp; Mechanics — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="callout exam" style="margin-bottom:22px;">
+      <strong>OUTCOME B</strong> — this page + Synchronous Machines + Induction Motors together make up
+      everything examined under Outcome B (your Assessment B-1 / B-2 style tests): AC-machine theory applied
+      to real driven systems — pumps, scrapers, gearboxes, fuse sizing, and VSDs.
+    </div>
+
+    <h2 class="page-title">⚙️ Outcome B: AC Systems &amp; Mechanics</h2>
+    <p class="page-tagline">Induction-motor-driven pumps, scrapers and gearboxes, hydraulic power, VSD sizing, and fuse/protection rating — exactly the style of your B-1 and B-2 assessments.</p>
+
+    <section class="block">
+      <h3>1. Same mechanics, AC machine on the front end</h3>
+      <p>The gearbox and power-flow rules are identical to Outcome A — the only difference is that the prime mover is now
+      an <strong>induction motor</strong>, so its own speed depends on slip (n = (1−s)n<sub>s</sub>), and its electrical
+      input depends on power factor as well as efficiency:</p>
+      <div class="formula">P<sub>load</sub> = T<sub>load</sub>·ω<sub>load</sub> &nbsp;&nbsp;&nbsp; P<sub>motor shaft</sub> = P<sub>load</sub> / η<sub>gearbox</sub> &nbsp;&nbsp;&nbsp; P<sub>electrical</sub> = P<sub>motor shaft</sub> / η<sub>motor</sub></div>
+      <p>Once you have the required electrical input power, 3-phase line current follows from:</p>
+      <div class="formula">P = √3 · V<sub>L</sub> · I<sub>L</sub> · cos φ &nbsp;&nbsp;(wye or delta — V<sub>L</sub> is always the LINE voltage here)</div>
+      <div class="callout tip">Whether the motor itself is star or delta connected doesn't change this line-current formula — V<sub>L</sub> is always
+      line-to-line voltage. Star/delta only matters if you need the <em>phase</em> current or phase voltage specifically.</div>
+    </section>
+
+    <section class="block">
+      <h3>2. Hydraulic power (pumping systems)</h3>
+      <p>For a pump lifting water (or any fluid) through a height, the useful ("hydraulic") power is just the rate of doing
+      work against gravity:</p>
+      <div class="formula">P<sub>hydraulic</sub> = (ρ · V · g · h) / t &nbsp;&nbsp;&nbsp; (ρ<sub>water</sub> = 1000 kg/m³)</div>
+      <p>where V = volume moved (m³), h = height lifted (m), t = time taken (s). This hydraulic power is the pump's
+      <em>useful output</em> — work backward through the pump efficiency, then the gearbox efficiency, then the motor
+      efficiency to find the required electrical input, exactly as in the efficiency-chain method from Outcome A.</p>
+    </section>
+
+    <section class="block">
+      <h3>3. Worked example — scraper mechanism (gearbox + induction motor)</h3>
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>A squirrel-cage induction machine (3 pole pairs = 6 poles, delta, 380 V, 86% efficient) drives a scraper
+        through a 210:15 reduction gearbox (67% efficient). At maximum load the slip is 3% and power factor is 0.87. The
+        scraper torque is 200 N·m. Find the total electrical input power to the machine.</strong></p>
+        <ol>
+          <li>Synchronous speed: n<sub>s</sub> = 120(50)/6 = 1000 rpm. Motor speed at 3% slip: n = 970 rpm.</li>
+          <li>Gearbox ratio = 210/15 = 14. Scraper (output) speed = 970/14 ≈ 69.3 rpm → ω ≈ 7.26 rad/s.</li>
+          <li>Scraper (load) power = T×ω = 200×7.26 ≈ 1451 W.</li>
+          <li>Motor shaft power = load power ÷ gearbox efficiency = 1451/0.67 ≈ 2167 W.</li>
+          <li>Electrical input power = motor shaft power ÷ motor efficiency = 2167/0.86 ≈ <strong>2519 W ≈ 2.52 kW</strong>.</li>
+        </ol>
+        <p>Notice the power factor (0.87) wasn't actually needed to find the input <em>power</em> — it would matter if the
+        question instead asked for line current.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>4. Worked example — pump + fuse sizing</h3>
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>A 6-pole, 400 V, wye-connected induction machine drives a pump through a 105:3 reduction gearbox (56%
+        efficient). 100 m³ of water must be lifted 15 m in 1 hour. Pump efficiency 70%, motor efficiency 80%, motor power
+        factor 0.85. Design the fuse rating, allowing 20% overrating for start-up.</strong></p>
+        <ol>
+          <li>Hydraulic power: P = (1000×100×9.81×15)/3600 ≈ 4088 W.</li>
+          <li>Pump shaft input = hydraulic power ÷ pump efficiency = 4088/0.70 ≈ 5839 W.</li>
+          <li>Motor shaft output = pump shaft input ÷ gearbox efficiency = 5839/0.56 ≈ 10 427 W.</li>
+          <li>Motor electrical input = motor shaft output ÷ motor efficiency = 10427/0.80 ≈ 13 034 W.</li>
+          <li>Line current: I<sub>L</sub> = P/(√3·V<sub>L</sub>·pf) = 13034/(1.732×400×0.85) ≈ 22.1 A.</li>
+          <li>Fuse rating (with 20% margin) = 22.1×1.2 ≈ <strong>26.6 A</strong>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>5. VSDs and induction machine control</h3>
+      <p>A Variable Speed Drive (VSD/inverter) sits between the mains and the motor, itself introducing an extra
+      efficiency stage. Sizing its input rating just adds one more division into the efficiency chain:</p>
+      <div class="formula">P<sub>VSD input (from mains)</sub> = P<sub>mechanical load</sub> / (η<sub>motor</sub> × η<sub>VSD</sub>)</div>
+      <p>Recall from the Induction Motors page: a VSD achieves smooth starting and speed control via voltage/frequency
+      (V/Hz) control, avoiding the large inrush currents of direct-on-line or even star-delta starting, and can maintain
+      good torque capability across a wide speed range.</p>
+    </section>
+
+    <section class="block">
+      <h3>Section Test — Outcome B: AC Systems &amp; Mechanics</h3>
+      <p class="page-tagline">8 questions on induction-motor-driven gearboxes, pumps, fuse sizing, and VSDs.</p>
+      <div id="quiz-outcomeB" class="quiz-wrap"></div>
+    </section>
+  </main>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>QuizEngine.render('quiz-outcomeB', QB.outcomeB, 'outcomeB');</script>
+</body>
+</html>

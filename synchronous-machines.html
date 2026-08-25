@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synchronous Machines — Machines 4B</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <h1>⚡ Machines 4B</h1>
+    <div class="subtitle">EMAEEB4 study hub &amp; test prep</div>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <div class="group-label">Outcome A — DC Machines</div>
+      <a href="dc-machines.html">🔋 DC Machines</a>
+      <a href="outcome-a-applications.html">⚙️ DC Systems &amp; Mechanics</a>
+      <div class="group-label">Outcome B — AC Machines</div>
+      <a href="synchronous-machines.html">🔄 Synchronous Machines</a>
+      <a href="induction-motors.html">🌀 Induction Motors</a>
+      <a href="outcome-b-applications.html">⚙️ AC Systems &amp; Mechanics</a>
+      <div class="group-label">Reference</div>
+      <a href="formulas.html">📐 Formula Sheet</a>
+      <div class="group-label">Test yourself</div>
+      <a href="mock-tests.html">📝 Mock Tests</a>
+    </nav>
+    <div class="progress-mini">
+      Your progress
+      <div class="bar"><div id="mini-progress-bar"></div></div>
+      <div id="mini-progress-label" style="margin-top:6px;color:#c9d7ec;">No quiz attempts yet</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h2 class="page-title">🔄 Synchronous Machines</h2>
+    <p class="page-tagline">EMF equation &amp; winding factors, voltage regulation, power-angle equation, and power-factor correction.</p>
+
+    <section class="block">
+      <h3>1. Principle &amp; the EMF equation</h3>
+      <p>A DC-excited rotor (field) spins at synchronous speed n<sub>s</sub> = 120f/p, sweeping its flux past a distributed
+      stator winding and inducing a 3-phase EMF. Because the winding is spread over several slots per pole per phase and
+      often uses a "short-pitched" (fractional-pitch) coil, the coil voltages don't add up perfectly in phase — two
+      correction factors are needed:</p>
+      <div class="formula">k<sub>d</sub> = sin(qα/2) / [q·sin(α/2)] &nbsp;&nbsp;&nbsp; k<sub>p</sub> = sin(β·90°/τ) &nbsp;&nbsp;&nbsp; k<sub>w</sub> = k<sub>d</sub>k<sub>p</sub></div>
+      <p>where q = slots/pole/phase = Q/(pm), α = slot angle = 180°/(mq), τ = full pole pitch (slots), β = actual coil pitch (slots).</p>
+      <div class="formula">E<sub>rms</sub> (per phase) = 4.44 · k<sub>w</sub> · f · N · φ<sub>m</sub></div>
+      <p>where N = turns/phase (= half the series conductors/phase) and φ<sub>m</sub> = peak flux/pole.</p>
+      <div class="callout tip">If the flux has harmonic content (e.g. 3rd harmonic), each harmonic needs its OWN distribution factor
+      (using α×harmonic order) and its own EMF term; total rms voltage is the root-sum-square of the fundamental and harmonic rms voltages
+      — this matters because 3rd-harmonic line voltages actually cancel in a star connection, which is one reason star connections are preferred.</div>
+    </section>
+
+    <section class="block">
+      <h3>2. Synchronous impedance &amp; voltage regulation</h3>
+      <p>Per phase, the machine is modelled as an internal EMF V<sub>0</sub> behind synchronous impedance Z<sub>s</sub>=R<sub>a</sub>+jX<sub>s</sub>, feeding the terminal voltage V<sub>t</sub>:</p>
+      <div class="formula">V<sub>0</sub> = V<sub>t</sub> + I<sub>a</sub>(R<sub>a</sub> + jX<sub>s</sub>) &nbsp;&nbsp;(generator, using load-current sign convention)</div>
+      <div class="formula">Percent regulation = (V<sub>0</sub> − V<sub>t</sub>)/V<sub>t</sub> × 100%</div>
+      <p>Work this out as a phasor sum: put V<sub>t</sub> on the real axis, write I<sub>a</sub> at the load's power-factor angle
+      (lagging → negative angle, leading → positive angle), multiply by Z<sub>s</sub>, add to V<sub>t</sub>, then take the magnitude.</p>
+      <table class="data">
+        <tr><th>Load type</th><th>Typical regulation</th></tr>
+        <tr><td>Lagging (inductive) pf</td><td>Large and positive — voltage sags significantly under load</td></tr>
+        <tr><td>Unity pf</td><td>Small positive</td></tr>
+        <tr><td>Leading (capacitive) pf</td><td>Small, or even negative — voltage can rise under load</td></tr>
+      </table>
+      <div class="example">
+        <span class="tag">Worked example</span>
+        <p><strong>230 V (line), wye, X<sub>s</sub>=1.2 Ω, R<sub>a</sub>=0.5 Ω, full load 0.8 lagging pf, rated 10 kVA. Find % regulation.</strong></p>
+        <ol>
+          <li>Vt(phase) = 230/√3 = 132.8 V. Ia = 10000/(√3×230) = 25.1 A at 0.8 lag → 20.08−j15.06 A.</li>
+          <li>V0 = √[(Vtcosφ+IaRa)² + (Vtsinφ+IaXs)²] using the phasor law directly = √[(106.24+12.55)²+(79.68+30.12)²] ≈ 161.76 V.</li>
+          <li>Regulation = (161.76−132.8)/132.8 × 100 ≈ 21.8%.</li>
+        </ol>
+        <p>Repeating with 0.8 <em>leading</em> pf (same machine) gives V₀≈128.7V, i.e. regulation ≈ −3.1% — notice the sign flips.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>3. The power-angle equation &amp; operating modes</h3>
+      <p>For a round-rotor machine (R<sub>a</sub> negligible), the power transferred between terminal voltage and internal EMF,
+      separated by power (torque) angle δ, is:</p>
+      <div class="formula">P (per phase) = (V<sub>t</sub>·V<sub>0</sub>/X<sub>s</sub>)·sin δ</div>
+      <p>For a <strong>salient-pole</strong> machine (X<sub>d</sub> ≠ X<sub>q</sub>), an extra "reluctance power" term appears:</p>
+      <div class="formula">P = (V<sub>t</sub>V<sub>0</sub>/X<sub>d</sub>)sin δ + (V<sub>t</sub>²/2)(1/X<sub>q</sub> − 1/X<sub>d</sub>)sin 2δ</div>
+      <ul>
+        <li>δ > 0 (V<sub>0</sub> leads V<sub>t</sub>) → <strong>generator</strong> action (delivering power out).</li>
+        <li>δ < 0 (V<sub>0</sub> lags V<sub>t</sub>) → <strong>motor</strong> action (absorbing power in).</li>
+      </ul>
+      <div class="callout tip">This power-angle view (from the machine's own internal geometry) is exactly equivalent to the induction-machine-style
+      "power ∝ sin(angle between rotor and stator MMF)" picture — same physics, two ways of writing it, as your study guide notes (FKU Eq. 4.73 vs 4.65/5.1).</div>
+    </section>
+
+    <section class="block">
+      <h3>4. Synchronous motor &amp; power-factor correction</h3>
+      <p>As a motor, the machine's power factor is set by its <strong>excitation (field current)</strong>, not by the mechanical load:</p>
+      <ul>
+        <li><strong>Under-excited</strong> → V<sub>0</sub> &lt; needed → motor draws lagging current (absorbs vars, behaves inductively).</li>
+        <li><strong>Over-excited</strong> → V<sub>0</sub> &gt; needed → motor draws leading current (supplies vars, behaves capacitively).</li>
+        <li>Exactly the right excitation gives unity pf and minimum armature current for a given power.</li>
+      </ul>
+      <p>This is exploited for <strong>power-factor correction</strong>: run an over-excited synchronous motor in parallel with
+      lagging loads (like induction motors); it supplies leading vars that cancel out some of the lagging vars, raising the
+      overall system power factor — while also doing useful mechanical work, unlike a static capacitor bank.</p>
+      <div class="example">
+        <span class="tag">Worked example — PF correction</span>
+        <p><strong>An induction motor takes 350 kW at 0.707 lagging. A synchronous motor is added, taking 150 kW, and the combined pf becomes 0.9 lagging. Find the synchronous motor's kVA rating.</strong></p>
+        <ol>
+          <li>Induction motor: S=350/0.707=495 kVA, Q=495sin(45°)=−350 kvar (lagging, i.e. absorbing).</li>
+          <li>Combined: P=500kW, S=500/0.9=555.5kVA, Q=555.5sin(cos⁻¹0.9)=−242.16 kvar.</li>
+          <li>Synchronous motor's own Q = −242.16−(−350)=107.84 kvar (it is supplying/leading). Its kVA = √(150²+107.84²) ≈ 184.7 kVA.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>Section Test — Synchronous Machines</h3>
+      <p class="page-tagline">10 questions covering winding factors, regulation, power angle, and PF correction.</p>
+      <div id="quiz-syn" class="quiz-wrap"></div>
+    </section>
+  </main>
+</div>
+<script src="questions.js"></script>
+<script src="app.js"></script>
+<script>QuizEngine.render('quiz-syn', QB.syn, 'syn');</script>
+</body>
+</html>
