@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formula Sheet — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -39,42 +42,42 @@
     <div class="callout exam"><strong>OUTCOME A</strong> below.</div>
     <section class="block">
       <h3>DC Machines <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome A)</span></h3>
-      <div class="formula small">E = (φZN/60)(P/A) &nbsp;|&nbsp; lap: A=P&nbsp;&nbsp; wave: A=2</div>
-      <div class="formula small">P<sub>d</sub> = E·I<sub>a</sub> = T<sub>e</sub>ω<sub>m</sub> &nbsp;|&nbsp; T<sub>e</sub> = k<sub>a</sub>φI<sub>a</sub> &nbsp;|&nbsp; ω<sub>m</sub>=2πN/60</div>
-      <div class="formula small">V = E + I<sub>a</sub>R<sub>a</sub> (motor) &nbsp;|&nbsp; E = V − I<sub>a</sub>R<sub>a</sub> (motor back-emf) &nbsp;|&nbsp; E = V + I<sub>a</sub>R<sub>a</sub> (generator)</div>
-      <div class="formula small">n ∝ E/φ &nbsp;(series unsaturated: φ∝I<sub>a</sub> → T∝I<sub>a</sub>²) &nbsp;(PM: φ=const → E∝n)</div>
-      <div class="formula small">η = P<sub>out</sub>/P<sub>in</sub> &nbsp;|&nbsp; max η when I<sub>a</sub>²R<sub>a</sub> = P<sub>constant</sub> &nbsp;→&nbsp; I<sub>a</sub>=√(P<sub>c</sub>/R<sub>a</sub>)</div>
+      <div class="formula small">\[ E=\frac{\phi ZN}{60}\left(\frac{P}{A}\right) \qquad \text{Lap: }A=P,\ \text{Wave: }A=2 \]</div>
+      <div class="formula small">\[ P_d=EI_a=T_e\omega_m \qquad T_e=k_a\phi I_a \qquad \omega_m=\frac{2\pi N}{60} \]</div>
+      <div class="formula small">\[ V=E+I_aR_a\ (\text{motor}) \qquad E=V-I_aR_a\ (\text{back-emf}) \qquad E=V+I_aR_a\ (\text{generator}) \]</div>
+      <div class="formula small">\[ n\propto\frac{E}{\phi} \qquad (\phi\propto I_a\Rightarrow T\propto I_a^2) \qquad (\phi=\text{const}\Rightarrow E\propto n) \]</div>
+      <div class="formula small">\[ \eta=\frac{P_{\text{out}}}{P_{\text{in}}} \qquad I_a^2R_a=P_{\text{constant}} \Rightarrow I_a=\sqrt{\frac{P_c}{R_a}} \]</div>
     </section>
 
     <div class="callout exam" style="margin-top:26px;"><strong>OUTCOME B</strong> below.</div>
     <section class="block">
       <h3>Induction Motors <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome B)</span></h3>
-      <div class="formula small">n<sub>s</sub> = 120f/p &nbsp;|&nbsp; s = (n<sub>s</sub>−n)/n<sub>s</sub> &nbsp;|&nbsp; n=(1−s)n<sub>s</sub> &nbsp;|&nbsp; f<sub>2</sub>=sf<sub>1</sub></div>
-      <div class="formula small">P<sub>g</sub> (air-gap) = 3I<sub>2</sub>²(R<sub>2</sub>/s) &nbsp;|&nbsp; rotor Cu loss = sP<sub>g</sub> &nbsp;|&nbsp; P<sub>dev</sub>=(1−s)P<sub>g</sub></div>
-      <div class="formula small">T<sub>e</sub> = P<sub>g</sub>/ω<sub>s</sub> &nbsp;|&nbsp; max torque: R<sub>2</sub>=sX<sub>2</sub> &nbsp;|&nbsp; T/T<sub>max</sub> = 2(s*/s)/[1+(s*/s)²]</div>
-      <div class="formula small">Blocked-rotor: R<sub>e</sub>=P<sub>s</sub>/I<sub>s</sub>², X<sub>e</sub>=√[(V<sub>s</sub>I<sub>s</sub>)²−P<sub>s</sub>²]/I<sub>s</sub>²</div>
-      <div class="formula small">Autotransformer start: T<sub>s</sub>/T<sub>FL</sub>=(kI<sub>s,full</sub>/I<sub>FL</sub>)²s<sub>FL</sub> &nbsp;|&nbsp; Star-delta: I,T both ÷3 vs DOL</div>
+      <div class="formula small">\[ n_s=\frac{120f}{p} \qquad s=\frac{n_s-n}{n_s} \qquad n=(1-s)n_s \qquad f_2=sf_1 \]</div>
+      <div class="formula small">\[ P_g=3I_2^2\left(\frac{R_2}{s}\right) \qquad P_{\text{Rotor Cu}}=sP_g \qquad P_{\text{dev}}=(1-s)P_g \]</div>
+      <div class="formula small">\[ T_e=\frac{P_g}{\omega_s} \qquad R_2=sX_2 \qquad \frac{T}{T_{\max}}=\frac{2(s^\*/s)}{1+(s^\*/s)^2} \]</div>
+      <div class="formula small">\[ R_e=\frac{P_s}{I_s^2}, \qquad X_e=\frac{\sqrt{(V_sI_s)^2-P_s^2}}{I_s^2} \]</div>
+      <div class="formula small">\[ \frac{T_s}{T_{FL}}=\left(\frac{kI_{s,\text{full}}}{I_{FL}}\right)^2s_{FL} \qquad \text{Star-delta: }I,T\approx\frac{1}{3}\text{ of DOL} \]</div>
     </section>
 
     <section class="block">
       <h3>Synchronous Machines <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome B)</span></h3>
-      <div class="formula small">n<sub>s</sub>=120f/p &nbsp;|&nbsp; q=Q/(pm) &nbsp;|&nbsp; α=180°/(mq) &nbsp;|&nbsp; k<sub>d</sub>=sin(qα/2)/[q sin(α/2)]</div>
-      <div class="formula small">k<sub>p</sub>=sin(β·90°/τ) &nbsp;|&nbsp; k<sub>w</sub>=k<sub>d</sub>k<sub>p</sub> &nbsp;|&nbsp; E<sub>rms</sub>=4.44k<sub>w</sub>fNφ<sub>m</sub></div>
-      <div class="formula small">V<sub>0</sub> = V<sub>t</sub> + I<sub>a</sub>(R<sub>a</sub>+jX<sub>s</sub>) &nbsp;|&nbsp; %reg = (V<sub>0</sub>−V<sub>t</sub>)/V<sub>t</sub> × 100</div>
-      <div class="formula small">Round rotor: P=(V<sub>t</sub>V<sub>0</sub>/X<sub>s</sub>)sinδ</div>
-      <div class="formula small">Salient pole: P=(V<sub>t</sub>V<sub>0</sub>/X<sub>d</sub>)sinδ + (V<sub>t</sub>²/2)(1/X<sub>q</sub>−1/X<sub>d</sub>)sin2δ</div>
-      <div class="formula small">Over-excited → leading (supplies vars, PF correction) &nbsp;|&nbsp; Under-excited → lagging (absorbs vars)</div>
+      <div class="formula small">\[ n_s=\frac{120f}{p} \qquad q=\frac{Q}{pm} \qquad \alpha=\frac{180^\circ}{mq} \qquad k_d=\frac{\sin(q\alpha/2)}{q\sin(\alpha/2)} \]</div>
+      <div class="formula small">\[ k_p=\sin\left(\frac{90^\circ\beta}{\tau}\right) \qquad k_w=k_dk_p \qquad E_{\mathrm{rms}}=4.44k_wfN\phi_m \]</div>
+      <div class="formula small">\[ V_0=V_t+I_a(R_a+jX_s) \qquad \%\text{reg}=\frac{V_0-V_t}{V_t}\times100 \]</div>
+      <div class="formula small">\[ P=\left(\frac{V_tV_0}{X_s}\right)\sin\delta \]</div>
+      <div class="formula small">\[ P=\left(\frac{V_tV_0}{X_d}\right)\sin\delta+\left(\frac{V_t^2}{2}\right)\left(\frac{1}{X_q}-\frac{1}{X_d}\right)\sin2\delta \]</div>
+      <div class="formula small">\[ \text{Over-excited}\Rightarrow\text{leading PF (supplies vars)} \qquad \text{Under-excited}\Rightarrow\text{lagging PF (absorbs vars)} \]</div>
     </section>
 
     <div class="callout exam" style="margin-top:26px;">General mechanics formulas below apply to <strong>both outcomes</strong> — the hydraulic-power line is specific to Outcome B pump problems.</div>
     <section class="block">
       <h3>Mechanics &amp; Energy Conversion <span style="font-weight:400;color:var(--muted);font-size:.8rem;">(Outcome A &amp; B applications)</span></h3>
-      <div class="formula small">P = Tω &nbsp;|&nbsp; ω=2πN/60 &nbsp;|&nbsp; T=J(dω/dt)+bω+T<sub>load</sub></div>
-      <div class="formula small">Gearbox (ideal): N<sub>1</sub>D<sub>1</sub>=N<sub>2</sub>D<sub>2</sub> &nbsp;|&nbsp; T<sub>out</sub>/T<sub>in</sub>=N<sub>in</sub>/N<sub>out</sub></div>
-      <div class="formula small">With losses: T<sub>motor</sub>=(T<sub>load</sub>/ratio)/η<sub>gb</sub> &nbsp;|&nbsp; P<sub>out</sub>=P<sub>in</sub>×η<sub>gb</sub></div>
-      <div class="formula small">Lifting: F=mg &nbsp;|&nbsp; T<sub>drum</sub>=F·r &nbsp;|&nbsp; P=Fv &nbsp;|&nbsp; v=distance/time</div>
-      <div class="formula small">Chain efficiency: P<sub>source</sub>=P<sub>load</sub>/(η<sub>1</sub>η<sub>2</sub>η<sub>3</sub>...) &nbsp;|&nbsp; Runtime (h) ≈ Capacity (A·h)/Current (A)</div>
-      <div class="formula small">Hydraulic power (Outcome B pumps): P<sub>hyd</sub>=(ρVgh)/t, &nbsp;ρ<sub>water</sub>=1000 kg/m³ &nbsp;|&nbsp; 3-phase: P=√3V<sub>L</sub>I<sub>L</sub>cosφ</div>
+      <div class="formula small">\[ P=T\omega \qquad \omega=\frac{2\pi N}{60} \qquad T=J\left(\frac{d\omega}{dt}\right)+b\omega+T_{\text{load}} \]</div>
+      <div class="formula small">\[ N_1D_1=N_2D_2 \qquad \frac{T_{\text{out}}}{T_{\text{in}}}=\frac{N_{\text{in}}}{N_{\text{out}}} \]</div>
+      <div class="formula small">\[ T_{\text{motor}}=\frac{(T_{\text{load}}/\text{ratio})}{\eta_{gb}} \qquad P_{\text{out}}=P_{\text{in}}\eta_{gb} \]</div>
+      <div class="formula small">\[ F=mg \qquad T_{\text{drum}}=Fr \qquad P=Fv \qquad v=\frac{\text{distance}}{\text{time}} \]</div>
+      <div class="formula small">\[ P_{\text{source}}=\frac{P_{\text{load}}}{\eta_1\eta_2\eta_3\cdots} \qquad \text{Runtime (h)}\approx\frac{\text{Capacity (A·h)}}{\text{Current (A)}} \]</div>
+      <div class="formula small">\[ P_{\text{hyd}}=\frac{\rho Vgh}{t},\ \rho_{\text{water}}\approx1000\,\mathrm{kg/m^3} \qquad P=\sqrt{3}V_LI_L\cos\phi \]</div>
     </section>
 
     <div class="callout exam">

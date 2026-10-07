@@ -59,10 +59,24 @@ section.block h3{margin-top:0;color:var(--navy2);font-size:1.25rem;border-bottom
 section.block h4{color:var(--navy2);font-size:1.05rem;margin-bottom:6px;}
 
 .formula{
-  background:#eef3fb;border-left:4px solid var(--accent2);border-radius:6px;
-  padding:10px 16px;margin:12px 0;font-family:"Cambria Math","Georgia",serif;font-size:1.05rem;overflow-x:auto;
+  background:#f8fafc;
+  border:1px solid #d8e1ef;
+  border-left:4px solid var(--accent2);
+  border-radius:8px;
+  padding:14px 16px;
+  margin:14px 0;
+  font-family:"STIX Two Text","Cambria Math","Times New Roman",serif;
+  font-size:1.07rem;
+  line-height:1.8;
+  overflow-x:auto;
 }
 .formula.small{font-size:.98rem;}
+.formula .katex-display{margin:0;}
+.formula-note{
+  margin-top:-6px;
+  color:var(--muted);
+  font-size:.9rem;
+}
 table.data{width:100%;border-collapse:collapse;margin:12px 0;font-size:.92rem;}
 table.data th,table.data td{border:1px solid var(--border);padding:7px 10px;text-align:left;}
 table.data th{background:#eef3fb;color:var(--navy2);}

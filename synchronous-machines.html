@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Synchronous Machines — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -42,9 +45,9 @@
       stator winding and inducing a 3-phase EMF. Because the winding is spread over several slots per pole per phase and
       often uses a "short-pitched" (fractional-pitch) coil, the coil voltages don't add up perfectly in phase — two
       correction factors are needed:</p>
-      <div class="formula">k<sub>d</sub> = sin(qα/2) / [q·sin(α/2)] &nbsp;&nbsp;&nbsp; k<sub>p</sub> = sin(β·90°/τ) &nbsp;&nbsp;&nbsp; k<sub>w</sub> = k<sub>d</sub>k<sub>p</sub></div>
+      <div class="formula">\[ k_d = \frac{\sin\left(\frac{q\alpha}{2}\right)}{q\sin\left(\frac{\alpha}{2}\right)} \qquad k_p = \sin\left(\frac{90^\circ\beta}{\tau}\right) \qquad k_w = k_dk_p \]</div>
       <p>where q = slots/pole/phase = Q/(pm), α = slot angle = 180°/(mq), τ = full pole pitch (slots), β = actual coil pitch (slots).</p>
-      <div class="formula">E<sub>rms</sub> (per phase) = 4.44 · k<sub>w</sub> · f · N · φ<sub>m</sub></div>
+      <div class="formula">\[ E_{\mathrm{rms}} = 4.44\,k_wfN\phi_m \]</div>
       <p>where N = turns/phase (= half the series conductors/phase) and φ<sub>m</sub> = peak flux/pole.</p>
       <div class="callout tip">If the flux has harmonic content (e.g. 3rd harmonic), each harmonic needs its OWN distribution factor
       (using α×harmonic order) and its own EMF term; total rms voltage is the root-sum-square of the fundamental and harmonic rms voltages
@@ -54,8 +57,9 @@
     <section class="block">
       <h3>2. Synchronous impedance &amp; voltage regulation</h3>
       <p>Per phase, the machine is modelled as an internal EMF V<sub>0</sub> behind synchronous impedance Z<sub>s</sub>=R<sub>a</sub>+jX<sub>s</sub>, feeding the terminal voltage V<sub>t</sub>:</p>
-      <div class="formula">V<sub>0</sub> = V<sub>t</sub> + I<sub>a</sub>(R<sub>a</sub> + jX<sub>s</sub>) &nbsp;&nbsp;(generator, using load-current sign convention)</div>
-      <div class="formula">Percent regulation = (V<sub>0</sub> − V<sub>t</sub>)/V<sub>t</sub> × 100%</div>
+      <div class="formula">\[ V_0 = V_t + I_a\left(R_a + jX_s\right) \]</div>
+      <div class="formula-note">Generator sign convention per phase.</div>
+      <div class="formula">\[ \%\text{Regulation} = \frac{V_0 - V_t}{V_t}\times 100\% \]</div>
       <p>Work this out as a phasor sum: put V<sub>t</sub> on the real axis, write I<sub>a</sub> at the load's power-factor angle
       (lagging → negative angle, leading → positive angle), multiply by Z<sub>s</sub>, add to V<sub>t</sub>, then take the magnitude.</p>
       <table class="data">
@@ -80,9 +84,9 @@
       <h3>3. The power-angle equation &amp; operating modes</h3>
       <p>For a round-rotor machine (R<sub>a</sub> negligible), the power transferred between terminal voltage and internal EMF,
       separated by power (torque) angle δ, is:</p>
-      <div class="formula">P (per phase) = (V<sub>t</sub>·V<sub>0</sub>/X<sub>s</sub>)·sin δ</div>
+      <div class="formula">\[ P = \left(\frac{V_tV_0}{X_s}\right)\sin\delta \]</div>
       <p>For a <strong>salient-pole</strong> machine (X<sub>d</sub> ≠ X<sub>q</sub>), an extra "reluctance power" term appears:</p>
-      <div class="formula">P = (V<sub>t</sub>V<sub>0</sub>/X<sub>d</sub>)sin δ + (V<sub>t</sub>²/2)(1/X<sub>q</sub> − 1/X<sub>d</sub>)sin 2δ</div>
+      <div class="formula">\[ P = \left(\frac{V_tV_0}{X_d}\right)\sin\delta + \left(\frac{V_t^2}{2}\right)\left(\frac{1}{X_q}-\frac{1}{X_d}\right)\sin 2\delta \]</div>
       <ul>
         <li>δ > 0 (V<sub>0</sub> leads V<sub>t</sub>) → <strong>generator</strong> action (delivering power out).</li>
         <li>δ < 0 (V<sub>0</sub> lags V<sub>t</sub>) → <strong>motor</strong> action (absorbing power in).</li>

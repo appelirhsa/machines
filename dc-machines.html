@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DC Machines — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -51,7 +54,7 @@
       <h3>2. The EMF equation</h3>
       <p>For an armature with <strong>Z</strong> total conductors, <strong>P</strong> poles, <strong>A</strong> parallel paths,
       flux per pole <strong>φ</strong> (Wb), running at <strong>N</strong> rpm:</p>
-      <div class="formula">E &nbsp;=&nbsp; (φ Z N)/60 &nbsp;×&nbsp; (P/A)</div>
+      <div class="formula">\[ E = \frac{\phi Z N}{60}\left(\frac{P}{A}\right) \]</div>
       <table class="data">
         <tr><th>Winding type</th><th>Parallel paths, A</th><th>Effect</th></tr>
         <tr><td>Lap</td><td>A = P</td><td>P/A = 1 → lower voltage, higher current capability (more parallel paths)</td></tr>
@@ -74,7 +77,7 @@
 
     <section class="block">
       <h3>3. Torque, developed power, and losses</h3>
-      <div class="formula">P<sub>d</sub> = E·I<sub>a</sub> &nbsp;=&nbsp; T<sub>e</sub>·ω<sub>m</sub> &nbsp;&nbsp;&nbsp;&nbsp; T<sub>e</sub> = k<sub>a</sub>φI<sub>a</sub></div>
+      <div class="formula">\[ P_d = E I_a = T_e \omega_m \qquad T_e = k_a \phi I_a \]</div>
       <p>where ω<sub>m</sub> = 2πN/60 (rad/s). This is the electromechanical energy-conversion link: the same power that
       "disappears" electrically as E·Ia reappears mechanically as torque times speed.</p>
       <h4>Loss breakdown</h4>
@@ -86,7 +89,7 @@
         <tr><td>Core (iron) loss + friction &amp; windage</td><td>lumped as "rotational" or "constant" losses P<sub>c</sub></td></tr>
         <tr><td>Stray-load loss</td><td>often estimated as ~1% of rated output</td></tr>
       </table>
-      <div class="formula small">η = Output / Input = Output / (Output + Σ losses)</div>
+      <div class="formula small">\[ \eta = \frac{\text{Output}}{\text{Input}} = \frac{\text{Output}}{\text{Output}+\sum \text{losses}} \]</div>
       <div class="callout tip"><strong>Maximum efficiency</strong> occurs when the variable loss (Ia²Ra) equals the constant loss P<sub>c</sub>: at that point, I<sub>a</sub> = √(P<sub>c</sub>/R<sub>a</sub>).</div>
 
       <div class="example">
@@ -121,7 +124,7 @@
 
     <section class="block">
       <h3>5. Speed control &amp; the Ward-Leonard system</h3>
-      <div class="formula">n &nbsp;=&nbsp; E / (k<sub>a</sub>φ) &nbsp;=&nbsp; (V − I<sub>a</sub>R<sub>a</sub>) / (k<sub>a</sub>φ)</div>
+      <div class="formula">\[ n = \frac{E}{k_a\phi} = \frac{V-I_aR_a}{k_a\phi} \]</div>
       <p>Three classic ways to change speed, visible directly in this equation:</p>
       <ul>
         <li><strong>Field control</strong> — reduce φ (field weakening) → speed rises. Torque capability falls for the same Ia (constant-power region above base speed).</li>

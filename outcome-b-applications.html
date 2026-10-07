@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Outcome B: AC Systems &amp; Mechanics — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -47,9 +50,10 @@
       <p>The gearbox and power-flow rules are identical to Outcome A — the only difference is that the prime mover is now
       an <strong>induction motor</strong>, so its own speed depends on slip (n = (1−s)n<sub>s</sub>), and its electrical
       input depends on power factor as well as efficiency:</p>
-      <div class="formula">P<sub>load</sub> = T<sub>load</sub>·ω<sub>load</sub> &nbsp;&nbsp;&nbsp; P<sub>motor shaft</sub> = P<sub>load</sub> / η<sub>gearbox</sub> &nbsp;&nbsp;&nbsp; P<sub>electrical</sub> = P<sub>motor shaft</sub> / η<sub>motor</sub></div>
+      <div class="formula">\[ P_{\text{load}}=T_{\text{load}}\omega_{\text{load}} \qquad P_{\text{motor shaft}}=\frac{P_{\text{load}}}{\eta_{\text{gearbox}}} \qquad P_{\text{electrical}}=\frac{P_{\text{motor shaft}}}{\eta_{\text{motor}}} \]</div>
       <p>Once you have the required electrical input power, 3-phase line current follows from:</p>
-      <div class="formula">P = √3 · V<sub>L</sub> · I<sub>L</sub> · cos φ &nbsp;&nbsp;(wye or delta — V<sub>L</sub> is always the LINE voltage here)</div>
+      <div class="formula">\[ P=\sqrt{3}\,V_LI_L\cos\phi \]</div>
+      <div class="formula-note">Applies to both wye and delta using line voltage \(V_L\).</div>
       <div class="callout tip">Whether the motor itself is star or delta connected doesn't change this line-current formula — V<sub>L</sub> is always
       line-to-line voltage. Star/delta only matters if you need the <em>phase</em> current or phase voltage specifically.</div>
     </section>
@@ -58,7 +62,8 @@
       <h3>2. Hydraulic power (pumping systems)</h3>
       <p>For a pump lifting water (or any fluid) through a height, the useful ("hydraulic") power is just the rate of doing
       work against gravity:</p>
-      <div class="formula">P<sub>hydraulic</sub> = (ρ · V · g · h) / t &nbsp;&nbsp;&nbsp; (ρ<sub>water</sub> = 1000 kg/m³)</div>
+      <div class="formula">\[ P_{\text{hydraulic}}=\frac{\rho Vgh}{t} \]</div>
+      <div class="formula-note">For water, \(\rho \approx 1000\,\mathrm{kg/m^3}\).</div>
       <p>where V = volume moved (m³), h = height lifted (m), t = time taken (s). This hydraulic power is the pump's
       <em>useful output</em> — work backward through the pump efficiency, then the gearbox efficiency, then the motor
       efficiency to find the required electrical input, exactly as in the efficiency-chain method from Outcome A.</p>
@@ -105,7 +110,7 @@
       <h3>5. VSDs and induction machine control</h3>
       <p>A Variable Speed Drive (VSD/inverter) sits between the mains and the motor, itself introducing an extra
       efficiency stage. Sizing its input rating just adds one more division into the efficiency chain:</p>
-      <div class="formula">P<sub>VSD input (from mains)</sub> = P<sub>mechanical load</sub> / (η<sub>motor</sub> × η<sub>VSD</sub>)</div>
+      <div class="formula">\[ P_{\text{VSD,input}}=\frac{P_{\text{mechanical load}}}{\eta_{\text{motor}}\eta_{\text{VSD}}} \]</div>
       <p>Recall from the Induction Motors page: a VSD achieves smooth starting and speed control via voltage/frequency
       (V/Hz) control, avoiding the large inrush currents of direct-on-line or even star-delta starting, and can maintain
       good torque capability across a wide speed range.</p>
