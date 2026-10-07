@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Induction Motors — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -39,10 +42,11 @@
     <section class="block">
       <h3>1. The rotating field &amp; slip</h3>
       <p>A balanced 3-phase stator winding produces a magnetic field that rotates at <strong>synchronous speed</strong>:</p>
-      <div class="formula">n<sub>s</sub> = 120f / p &nbsp;&nbsp;(rpm, p = number of poles)</div>
+      <div class="formula">\[ n_s = \frac{120f}{p} \]</div>
+      <div class="formula-note">rpm, where \(p\) is the number of poles.</div>
       <p>The rotor is dragged along by this field but can never quite catch it (otherwise there'd be no relative motion,
       no induced rotor EMF, and no torque). The difference is <strong>slip</strong>:</p>
-      <div class="formula">s = (n<sub>s</sub> − n)/n<sub>s</sub> &nbsp;&nbsp;&nbsp;&nbsp; n = (1−s)n<sub>s</sub></div>
+      <div class="formula">\[ s=\frac{n_s-n}{n_s} \qquad n=(1-s)n_s \]</div>
       <p>The rotor "sees" the field slip past it at frequency f<sub>2</sub> = s·f<sub>1</sub>, so the induced rotor EMF and
       current are at this slip frequency — very high (≈ f₁) at standstill, and very low near synchronous speed.</p>
       <div class="callout tip">The rotor's own magnetic field always rotates at synchronous speed relative to the <em>stator</em> —
@@ -52,9 +56,9 @@
     <section class="block">
       <h3>2. Per-phase equivalent circuit &amp; power flow</h3>
       <p>Just like a transformer, but with the rotor circuit's resistance divided by slip:</p>
-      <div class="formula">Z<sub>e</sub> = R<sub>1</sub> + jX<sub>1</sub> + (jX<sub>m</sub> ∥ (R<sub>2</sub>/s + jX<sub>2</sub>))</div>
+      <div class="formula">\[ Z_e = R_1 + jX_1 + \left(jX_m \parallel \left(\frac{R_2}{s}+jX_2\right)\right) \]</div>
       <p>Power flow across the machine, per phase (P<sub>g</sub> = air-gap power = power crossing into the rotor circuit):</p>
-      <div class="formula">P<sub>g</sub> = 3I<sub>2</sub>²(R<sub>2</sub>/s) &nbsp;&nbsp;&nbsp; Rotor Cu loss = s·P<sub>g</sub> &nbsp;&nbsp;&nbsp; P<sub>developed</sub> = (1−s)P<sub>g</sub></div>
+      <div class="formula">\[ P_g = 3I_2^2\left(\frac{R_2}{s}\right) \qquad P_{\mathrm{Rotor\,Cu}} = sP_g \qquad P_{\mathrm{developed}}=(1-s)P_g \]</div>
       <p>Shaft output power = P<sub>developed</sub> − mechanical (friction &amp; windage) losses. Motor <strong>efficiency</strong> = shaft output / total electrical input (stator input = P<sub>g</sub> + stator Cu loss + stator core loss).</p>
       <div class="callout tip">A very common trap: rotor <em>core</em> loss is normally neglected because rotor frequency is so low —
       but stator core loss is NOT neglected, since the stator always sees full supply frequency.</div>
@@ -62,11 +66,12 @@
 
     <section class="block">
       <h3>3. Torque &amp; maximum torque</h3>
-      <div class="formula">T<sub>e</sub> = P<sub>g</sub>/ω<sub>s</sub> = (3I<sub>2</sub>²R<sub>2</sub>) / (s·ω<sub>s</sub>)</div>
+      <div class="formula">\[ T_e = \frac{P_g}{\omega_s} = \frac{3I_2^2R_2}{s\omega_s} \]</div>
       <p>Differentiating torque with respect to R<sub>2</sub> (holding s and X<sub>2</sub> fixed) shows maximum torque occurs when:</p>
-      <div class="formula">R<sub>2</sub> = s·X<sub>2</sub> &nbsp;&nbsp;(at standstill, s=1: R<sub>2</sub>=X<sub>2</sub> gives max <em>starting</em> torque)</div>
+      <div class="formula">\[ R_2 = sX_2 \]</div>
+      <div class="formula-note">At standstill (\(s=1\)), \(R_2=X_2\) gives maximum starting torque.</div>
       <p>A handy ratio form, useful when you know T<sub>max</sub> and the slip s* at which it occurs, and want torque at any other slip s:</p>
-      <div class="formula">T<sub>e</sub>/T<sub>max</sub> = 2(s*/s) / [1 + (s*/s)²]</div>
+      <div class="formula">\[ \frac{T_e}{T_{\max}} = \frac{2\left(\frac{s^\*}{s}\right)}{1+\left(\frac{s^\*}{s}\right)^2} \]</div>
       <div class="callout tip">This is why wound-rotor (slip-ring) machines can add external rotor resistance to shift the slip at which
       maximum torque occurs — pushing it towards standstill for a high starting torque, without the very high starting current of a low-resistance cage rotor.</div>
     </section>

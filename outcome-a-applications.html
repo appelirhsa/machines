@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Outcome A: DC Systems &amp; Mechanics — Machines 4B</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <div class="layout">
@@ -44,7 +47,7 @@
 
     <section class="block">
       <h3>1. Torque, speed, power &amp; inertia basics</h3>
-      <div class="formula">P = T·ω &nbsp;&nbsp;(ω in rad/s = 2πN/60) &nbsp;&nbsp;&nbsp;&nbsp; T = J(dω/dt) + bω + T<sub>load</sub></div>
+      <div class="formula">\[ P=T\omega \qquad \omega=\frac{2\pi N}{60} \qquad T=J\left(\frac{d\omega}{dt}\right)+b\omega+T_{\text{load}} \]</div>
       <p>J is the total moment of inertia (motor rotor + load + couplings, referred to the same shaft), and b is a
       viscous damping/friction coefficient. At steady speed, dω/dt = 0 and the motor torque simply balances the load
       (+ friction) torque.</p>
@@ -55,9 +58,10 @@
     <section class="block">
       <h3>2. Gearboxes — the ideal (lossless) picture, then efficiency</h3>
       <p>An ideal gearbox conserves power: whatever speed is traded away, torque is gained by the same ratio (and vice versa).</p>
-      <div class="formula">Gear ratio n = N<sub>in</sub>/N<sub>out</sub> = T<sub>out</sub>/T<sub>in</sub> &nbsp;&nbsp;(ideal, lossless)</div>
+      <div class="formula">\[ n=\frac{N_{\text{in}}}{N_{\text{out}}}=\frac{T_{\text{out}}}{T_{\text{in}}} \]</div>
+      <div class="formula-note">Ideal, lossless gearbox relation.</div>
       <p>For a belt-and-pulley system, the ratio is simply the ratio of pulley diameters (belt speed is equal at both pulleys):</p>
-      <div class="formula">N<sub>1</sub>D<sub>1</sub> = N<sub>2</sub>D<sub>2</sub></div>
+      <div class="formula">\[ N_1D_1 = N_2D_2 \]</div>
       <p>Real gearboxes lose some power to friction, so an efficiency η<sub>gb</sub> &lt; 1 must be included. The key exam
       skill is knowing <em>which side</em> to divide or multiply by η on:</p>
       <ul>
@@ -71,7 +75,8 @@
 
     <section class="block">
       <h3>3. Linear motion — elevators, hoists &amp; vehicles</h3>
-      <div class="formula">F = mg &nbsp;(lifting at constant speed, no acceleration) &nbsp;&nbsp;&nbsp; T<sub>drum</sub> = F × r<sub>drum</sub> &nbsp;&nbsp;&nbsp; P = F·v</div>
+      <div class="formula">\[ F=mg \qquad T_{\text{drum}} = Fr_{\text{drum}} \qquad P=Fv \]</div>
+      <div class="formula-note">For lifting at constant speed (no acceleration).</div>
       <p>If there IS acceleration (e.g. the load starts from rest and speeds up), add the inertial term: F = m(g ± a) depending
       on direction, and refer all inertias to the same shaft via the gear ratio squared when computing effective J.</p>
       <div class="example">
@@ -92,9 +97,9 @@
       DC motor feeding a gearbox feeding a load (or the reverse, working backwards from a required load power to a required
       battery current). The rule is always the same: <strong>multiply efficiencies going forward (input → output);
       divide by them going backward (output requirement → input requirement)</strong>.</p>
-      <div class="formula">P<sub>battery</sub> = P<sub>load</sub> / (η<sub>converter</sub> × η<sub>motor</sub> × η<sub>gearbox</sub> × ...)</div>
+      <div class="formula">\[ P_{\text{battery}}=\frac{P_{\text{load}}}{\eta_{\text{converter}}\eta_{\text{motor}}\eta_{\text{gearbox}}\cdots} \]</div>
       <p>Battery sizing (rough, constant-current approximation):</p>
-      <div class="formula">Runtime (hours) ≈ Capacity (A·h) / Discharge current (A)</div>
+      <div class="formula">\[ \text{Runtime (hours)} \approx \frac{\text{Capacity (A·h)}}{\text{Discharge current (A)}} \]</div>
       <div class="callout tip">Draw the block diagram first (battery → converter → motor → gearbox → load) before writing any equations —
       almost every mark in these questions is for correctly identifying which efficiency divides which power, and a block diagram makes
       the direction of the chain visually obvious.</div>

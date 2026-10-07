@@ -5,8 +5,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var href = a.getAttribute('href');
     if (href === here) a.classList.add('active');
   });
+  typesetMath(document.body);
   renderMiniProgress();
 });
+
+function typesetMath(root) {
+  if (!window.renderMathInElement || !root) return;
+  renderMathInElement(root, {
+    delimiters: [
+      { left: '$$', right: '$$', display: true },
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false }
+    ],
+    throwOnError: false
+  });
+}
 
 /* ============ Simple localStorage progress store ============ */
 var Progress = {
@@ -144,6 +157,7 @@ var QuizEngine = (function () {
 
       card.appendChild(body);
       container.appendChild(card);
+      typesetMath(card);
 
       function markSolved(mode) {
         state.solved = true;
@@ -159,6 +173,7 @@ var QuizEngine = (function () {
         feedback.style.display = 'block';
         feedback.className = 'feedback ' + cls;
         feedback.innerHTML = html;
+        typesetMath(feedback);
       }
 
       function getUserAnswer() {
