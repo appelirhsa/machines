@@ -170,6 +170,57 @@ button.qbtn.secondary:hover{background:#f2f5fa;}
 .mock-final h3{color:#fff;border:none;font-size:1.6rem;}
 .mock-final .score-big{font-size:2.6rem;font-weight:800;color:var(--accent);}
 
+.login-card{
+  max-width:460px;
+  margin:0 auto;
+}
+.login-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.login-form label{
+  font-weight:600;
+  color:var(--navy2);
+}
+.login-form input[type=email],
+.login-form input[type=password]{
+  width:100%;
+  margin-top:6px;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:.95rem;
+}
+.login-form .remember{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:500;
+  color:var(--muted);
+}
+.login-form .remember input{
+  margin:0;
+}
+.login-message{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:8px;
+  display:none;
+}
+.login-message.ok{
+  display:block;
+  background:#e9f9ee;
+  color:#1c5e35;
+  border:1px solid #bfe6ca;
+}
+.login-message.bad{
+  display:block;
+  background:#fdeceb;
+  color:#8f2b24;
+  border:1px solid #f3c3bf;
+}
+
 @media (max-width: 880px){
   .layout{flex-direction:column;}
   .sidebar{

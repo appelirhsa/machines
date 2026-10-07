@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   typesetMath(document.body);
   renderMiniProgress();
+  initLoginPage();
 });
 
 function typesetMath(root) {
@@ -64,6 +65,59 @@ function renderMiniProgress() {
     label.textContent = total
       ? (correct + '/' + total + ' answered correctly so far')
       : 'No quiz attempts yet';
+  }
+
+  /* ============ Login page ============ */
+  function initLoginPage() {
+    var form = document.getElementById('login-form');
+    if (!form) return;
+
+    var msg = document.getElementById('login-message');
+    var remember = document.getElementById('remember-me');
+    var emailField = document.getElementById('login-email');
+    var passField = document.getElementById('login-password');
+    var key = 'emaeeb4_login_v1';
+
+    function show(type, text) {
+      if (!msg) return;
+      msg.className = 'login-message ' + type;
+      msg.textContent = text;
+    }
+
+    try {
+      var saved = JSON.parse(localStorage.getItem(key) || 'null');
+      if (saved && saved.email) {
+        show('ok', 'You are already signed in as ' + saved.email + '.');
+        if (emailField) emailField.value = saved.email;
+        if (remember) remember.checked = true;
+      }
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = emailField ? emailField.value.trim() : '';
+      var password = passField ? passField.value : '';
+
+      if (!email || !password) {
+        show('bad', 'Please enter both email and password.');
+        return;
+      }
+      if (email.indexOf('@') < 1) {
+        show('bad', 'Please enter a valid email address.');
+        return;
+      }
+
+      var data = { email: email, signedInAt: new Date().toISOString() };
+      if (remember && remember.checked) {
+        try { localStorage.setItem(key, JSON.stringify(data)); } catch (err) {}
+      } else {
+        try { localStorage.removeItem(key); } catch (err) {}
+      }
+
+      show('ok', 'Login successful. Redirecting to the home page...');
+      if (passField) passField.value = '';
+      setTimeout(function () { location.href = 'index.html'; }, 900);
+    });
   }
 }
 
